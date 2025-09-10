@@ -44,11 +44,11 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-sm">AU</span>
-                </div>
-                <span className="text-xl font-bold text-foreground hidden sm:block">
-                  Alumni Connect
-                </span>
+                <span className="text-primary-foreground font-bold text-sm">A</span>
+              </div>
+              <span className="text-xl font-bold text-foreground hidden sm:block">
+                Astra
+              </span>
               </Link>
             </div>
 
@@ -144,7 +144,7 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">Alumni Connect</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">Astra</h3>
               <p className="text-muted-foreground text-sm">
                 Connecting alumni, empowering futures, and building lasting relationships.
               </p>
@@ -175,7 +175,7 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-            © 2024 Alumni Connect. All rights reserved.
+            © 2024 Astra. All rights reserved.
           </div>
         </div>
       </footer>

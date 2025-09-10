@@ -49,7 +49,7 @@ const Home = () => {
           <div className="text-center">
             <Badge variant="secondary" className="mb-4">
               <Star className="h-3 w-3 mr-1" />
-              Welcome to Alumni Connect
+              Welcome to Astra
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Connect. <span className="text-primary">Grow.</span> <span className="text-secondary">Succeed.</span>

@@ -209,9 +209,9 @@ const Login = () => {
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center space-x-2 mb-6">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">AU</span>
+              <span className="text-primary-foreground font-bold text-sm">A</span>
             </div>
-            <span className="text-xl font-bold">Alumni Connect</span>
+            <span className="text-xl font-bold">Astra</span>
           </Link>
           <h1 className="text-3xl font-bold text-foreground">Choose Your Role</h1>
           <p className="text-muted-foreground mt-2">
