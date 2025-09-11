@@ -11,7 +11,10 @@ import {
   BarChart3,
   LogIn,
   Menu,
-  X
+  X,
+  Calendar,
+  Building,
+  User
 } from "lucide-react";
 
 interface LayoutProps {
@@ -26,6 +29,9 @@ const Layout = ({ children }: LayoutProps) => {
     { name: "Home", href: "/", icon: Home },
     { name: "Alumni Network", href: "/alumni", icon: Users },
     { name: "Career Portal", href: "/careers", icon: Briefcase },
+    { name: "Events", href: "/events", icon: Calendar },
+    { name: "Employers", href: "/employers", icon: Building },
+    { name: "Profile", href: "/profile", icon: User },
     { name: "Staff Portal", href: "/staff", icon: UserCheck },
     { name: "Donations", href: "/donations", icon: Heart },
     { name: "Analytics", href: "/analytics", icon: BarChart3 },
