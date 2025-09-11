@@ -108,42 +108,58 @@ const CareerPortal = () => {
     }
   ];
 
-  const trainingPrograms = [
+  const successStories = [
     {
       id: 1,
-      title: "Full Stack Development Bootcamp",
-      provider: "TechSkills Academy",
-      duration: "12 weeks",
-      level: "Intermediate",
-      enrolled: 150,
-      rating: 4.8,
-      price: "$2,999",
-      skills: ["React", "Node.js", "MongoDB", "DevOps"],
-      startDate: "Jan 15, 2025"
+      name: "Sarah Chen",
+      graduationYear: 2018,
+      currentRole: "Senior Software Engineer at Google",
+      company: "Google",
+      previousRole: "Junior Developer",
+      achievement: "Led development of Google Pay's fraud detection system, reducing false positives by 40%",
+      brief: "From struggling with basic programming concepts to leading critical security initiatives at one of the world's largest tech companies.",
+      image: "/placeholder.svg",
+      tags: ["Software Engineering", "Security", "Leadership"],
+      linkedin: "#"
     },
     {
       id: 2,
-      title: "Data Science & Machine Learning",
-      provider: "AI Institute",
-      duration: "16 weeks",
-      level: "Advanced",
-      enrolled: 89,
-      rating: 4.9,
-      price: "$3,499",
-      skills: ["Python", "TensorFlow", "Statistics", "Deep Learning"],
-      startDate: "Feb 1, 2025"
+      name: "Michael Rodriguez",
+      graduationYear: 2016,
+      currentRole: "VP of Product at Stripe",
+      company: "Stripe",
+      previousRole: "Business Analyst",
+      achievement: "Launched Stripe's expansion into 15 new markets, generating $500M+ in revenue",
+      brief: "Transformed from a business analyst to a product leader, driving global expansion strategies for fintech innovation.",
+      image: "/placeholder.svg",
+      tags: ["Product Management", "Strategy", "Fintech"],
+      linkedin: "#"
     },
     {
       id: 3,
-      title: "Digital Marketing Mastery",
-      provider: "Marketing Pro",
-      duration: "8 weeks",
-      level: "Beginner",
-      enrolled: 200,
-      rating: 4.7,
-      price: "$1,899",
-      skills: ["SEO", "Social Media", "Analytics", "Content Strategy"],
-      startDate: "Jan 22, 2025"
+      name: "Emily Johnson",
+      graduationYear: 2019,
+      currentRole: "Founder & CEO of EcoTech Solutions",
+      company: "EcoTech Solutions",
+      previousRole: "Environmental Consultant",
+      achievement: "Built a $50M sustainable technology company, serving 200+ enterprise clients",
+      brief: "Started as an environmental consultant and now leads a revolutionary clean-tech startup fighting climate change.",
+      image: "/placeholder.svg",
+      tags: ["Entrepreneurship", "Sustainability", "Leadership"],
+      linkedin: "#"
+    },
+    {
+      id: 4,
+      name: "David Kim",
+      graduationYear: 2017,
+      currentRole: "Head of AI Research at OpenAI",
+      company: "OpenAI",
+      previousRole: "Research Assistant",
+      achievement: "Co-authored 15 breakthrough papers in machine learning, cited over 10,000 times",
+      brief: "From research assistant to AI pioneer, contributing to cutting-edge developments in artificial intelligence and natural language processing.",
+      image: "/placeholder.svg",
+      tags: ["AI Research", "Machine Learning", "Innovation"],
+      linkedin: "#"
     }
   ];
 
@@ -212,7 +228,7 @@ const CareerPortal = () => {
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="jobs">Job Board</TabsTrigger>
             <TabsTrigger value="applications">My Applications</TabsTrigger>
-            <TabsTrigger value="training">Training</TabsTrigger>
+            <TabsTrigger value="success-stories">Success Stories</TabsTrigger>
             <TabsTrigger value="webinars">Webinars</TabsTrigger>
           </TabsList>
 
@@ -362,61 +378,83 @@ const CareerPortal = () => {
             </div>
           </TabsContent>
 
-          {/* Training Programs */}
-          <TabsContent value="training" className="space-y-6">
+          {/* Success Stories */}
+          <TabsContent value="success-stories" className="space-y-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-semibold">Professional Development</h2>
+              <h2 className="text-2xl font-semibold">Alumni Success Stories</h2>
               <Button>
-                <BookOpen className="h-4 w-4 mr-2" />
-                Browse All Courses
+                <Award className="h-4 w-4 mr-2" />
+                Share Your Story
               </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {trainingPrograms.map((program) => (
-                <Card key={program.id} className="hover:shadow-lg transition-shadow">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {successStories.map((story) => (
+                <Card key={story.id} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
-                    <CardTitle className="text-lg">{program.title}</CardTitle>
-                    <CardDescription>{program.provider}</CardDescription>
+                    <div className="flex items-start space-x-4">
+                      <Avatar className="h-16 w-16">
+                        <AvatarImage src={story.image} alt={story.name} />
+                        <AvatarFallback>{story.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1">
+                        <CardTitle className="text-lg">{story.name}</CardTitle>
+                        <CardDescription className="text-sm">
+                          Class of {story.graduationYear}
+                        </CardDescription>
+                        <div className="flex items-center mt-1">
+                          <Building className="h-4 w-4 mr-1 text-muted-foreground" />
+                          <span className="text-sm font-medium">{story.currentRole}</span>
+                        </div>
+                        <div className="text-sm text-muted-foreground">{story.company}</div>
+                      </div>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div className="flex items-center justify-between text-sm">
-                        <div className="flex items-center space-x-4">
-                          <span className="flex items-center">
-                            <Clock className="h-4 w-4 mr-1" />
-                            {program.duration}
-                          </span>
-                          <Badge variant="outline">{program.level}</Badge>
+                      <div>
+                        <div className="flex items-center mb-2">
+                          <TrendingUp className="h-4 w-4 mr-2 text-primary" />
+                          <span className="text-sm font-medium">Career Journey</span>
                         </div>
-                        <div className="flex items-center">
-                          <Star className="h-4 w-4 text-yellow-500 mr-1" />
-                          <span>{program.rating}</span>
+                        <div className="text-sm text-muted-foreground">
+                          <span className="font-medium">From:</span> {story.previousRole}
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          <span className="font-medium">To:</span> {story.currentRole}
                         </div>
                       </div>
 
                       <div>
-                        <p className="text-sm font-medium mb-2">You'll Learn:</p>
-                        <div className="flex flex-wrap gap-1">
-                          {program.skills.map((skill, index) => (
+                        <div className="flex items-center mb-2">
+                          <Target className="h-4 w-4 mr-2 text-primary" />
+                          <span className="text-sm font-medium">Key Achievement</span>
+                        </div>
+                        <p className="text-sm text-muted-foreground">{story.achievement}</p>
+                      </div>
+
+                      <div>
+                        <p className="text-sm italic">{story.brief}</p>
+                      </div>
+
+                      <div>
+                        <div className="flex flex-wrap gap-1 mb-3">
+                          {story.tags.map((tag, index) => (
                             <Badge key={index} variant="secondary" className="text-xs">
-                              {skill}
+                              {tag}
                             </Badge>
                           ))}
                         </div>
                       </div>
 
-                      <div className="flex items-center justify-between text-sm text-muted-foreground">
-                        <span className="flex items-center">
-                          <Users className="h-4 w-4 mr-1" />
-                          {program.enrolled} enrolled
-                        </span>
-                        <span>Starts {program.startDate}</span>
-                      </div>
-
                       <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold text-primary">{program.price}</span>
-                        <Button>Enroll Now</Button>
+                        <Button variant="outline" size="sm" className="flex items-center">
+                          <ExternalLink className="h-4 w-4 mr-1" />
+                          LinkedIn
+                        </Button>
+                        <Button size="sm">
+                          Connect
+                        </Button>
                       </div>
                     </div>
                   </CardContent>
