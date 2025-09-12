@@ -2,66 +2,52 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ChatBot from "./ChatBot";
-import { Home, Users, Briefcase, Settings, UserCheck, Heart, BarChart3, LogIn, Menu, X, Calendar, Building, User, GraduationCap, Trophy, UserPlus } from "lucide-react";
+import { 
+  Home, 
+  Users, 
+  Briefcase, 
+  Settings, 
+  UserCheck,
+  Heart,
+  BarChart3,
+  LogIn,
+  Menu,
+  X,
+  Calendar,
+  Building,
+  User,
+  GraduationCap,
+  Trophy,
+  UserPlus
+} from "lucide-react";
+
 interface LayoutProps {
   children: React.ReactNode;
 }
-const Layout = ({
-  children
-}: LayoutProps) => {
+
+const Layout = ({ children }: LayoutProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const navigation = [{
-    name: "Home",
-    href: "/",
-    icon: Home
-  }, {
-    name: "Alumni Network",
-    href: "/alumni",
-    icon: Users
-  }, {
-    name: "Career Portal",
-    href: "/careers",
-    icon: Briefcase
-  }, {
-    name: "Student Portal",
-    href: "/student-portal",
-    icon: GraduationCap
-  }, {
-    name: "Events",
-    href: "/events",
-    icon: Calendar
-  }, {
-    name: "Employers",
-    href: "/employers",
-    icon: Building
-  }, {
-    name: "Gamification",
-    href: "/gamification",
-    icon: Trophy
-  }, {
-    name: "Profile",
-    href: "/profile",
-    icon: User
-  }, {
-    name: "Staff Portal",
-    href: "/staff",
-    icon: UserCheck
-  }, {
-    name: "Donations",
-    href: "/donations",
-    icon: Heart
-  }, {
-    name: "Analytics",
-    href: "/analytics",
-    icon: BarChart3
-  }, {
-    name: "Admin",
-    href: "/admin",
-    icon: Settings
-  }];
+
+  const navigation = [
+    { name: "Home", href: "/", icon: Home },
+    { name: "Alumni Network", href: "/alumni", icon: Users },
+    { name: "Career Portal", href: "/careers", icon: Briefcase },
+    { name: "Student Portal", href: "/student-portal", icon: GraduationCap },
+    { name: "Events", href: "/events", icon: Calendar },
+    { name: "Employers", href: "/employers", icon: Building },
+    { name: "Gamification", href: "/gamification", icon: Trophy },
+    { name: "Profile", href: "/profile", icon: User },
+    { name: "Staff Portal", href: "/staff", icon: UserCheck },
+    { name: "Donations", href: "/donations", icon: Heart },
+    { name: "Analytics", href: "/analytics", icon: BarChart3 },
+    { name: "Admin", href: "/admin", icon: Settings },
+  ];
+
   const isActive = (path: string) => location.pathname === path;
-  return <div className="min-h-screen bg-background">
+
+  return (
+    <div className="min-h-screen bg-background">
       {/* Navigation Header */}
       <header className="bg-card border-b border-border shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,7 +55,7 @@ const Layout = ({
             {/* Logo */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center px-[10px]">
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">A</span>
               </div>
               <span className="text-xl font-bold text-foreground hidden sm:block">
@@ -80,13 +66,23 @@ const Layout = ({
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-1">
-              {navigation.map(item => {
-              const Icon = item.icon;
-              return <Link key={item.name} to={item.href} className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive(item.href) ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-accent"}`}>
+              {navigation.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                      isActive(item.href)
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                    }`}
+                  >
                     <Icon className="h-4 w-4" />
                     <span>{item.name}</span>
-                  </Link>;
-            })}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Desktop Auth */}
@@ -106,32 +102,62 @@ const Layout = ({
             </div>
 
             {/* Mobile menu button */}
-            <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        {mobileMenuOpen && <div className="md:hidden border-t border-border">
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-border">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map(item => {
-            const Icon = item.icon;
-            return <Link key={item.name} to={item.href} className={`flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium ${isActive(item.href) ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-accent"}`} onClick={() => setMobileMenuOpen(false)}>
+              {navigation.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium ${
+                      isActive(item.href)
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     <Icon className="h-5 w-5" />
                     <span>{item.name}</span>
-                  </Link>;
-          })}
-              <Link to="/signup" className="flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent" onClick={() => setMobileMenuOpen(false)}>
+                  </Link>
+                );
+              })}
+              <Link
+                to="/signup"
+                className="flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 <UserPlus className="h-5 w-5" />
                 <span>Sign Up</span>
               </Link>
-              <Link to="/login" className="flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent" onClick={() => setMobileMenuOpen(false)}>
+              <Link
+                to="/login"
+                className="flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 <LogIn className="h-5 w-5" />
                 <span>Login</span>
               </Link>
             </div>
-          </div>}
+          </div>
+        )}
       </header>
 
       {/* Main Content */}
@@ -182,6 +208,8 @@ const Layout = ({
           </div>
         </div>
       </footer>
-    </div>;
+    </div>
+  );
 };
+
 export default Layout;
