@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import ChatBot from "./ChatBot";
 import { 
   Home, 
   Users, 
@@ -14,7 +15,10 @@ import {
   X,
   Calendar,
   Building,
-  User
+  User,
+  GraduationCap,
+  Trophy,
+  UserPlus
 } from "lucide-react";
 
 interface LayoutProps {
@@ -29,8 +33,10 @@ const Layout = ({ children }: LayoutProps) => {
     { name: "Home", href: "/", icon: Home },
     { name: "Alumni Network", href: "/alumni", icon: Users },
     { name: "Career Portal", href: "/careers", icon: Briefcase },
+    { name: "Student Portal", href: "/student-portal", icon: GraduationCap },
     { name: "Events", href: "/events", icon: Calendar },
     { name: "Employers", href: "/employers", icon: Building },
+    { name: "Gamification", href: "/gamification", icon: Trophy },
     { name: "Profile", href: "/profile", icon: User },
     { name: "Staff Portal", href: "/staff", icon: UserCheck },
     { name: "Donations", href: "/donations", icon: Heart },
@@ -81,8 +87,14 @@ const Layout = ({ children }: LayoutProps) => {
 
             {/* Desktop Auth */}
             <div className="hidden md:flex items-center space-x-2">
+              <Link to="/signup">
+                <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                  <UserPlus className="h-4 w-4 mr-2" />
+                  Sign Up
+                </Button>
+              </Link>
               <Link to="/login">
-                <Button variant="ghost" size="sm">
+                <Button size="sm" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
                   <LogIn className="h-4 w-4 mr-2" />
                   Login
                 </Button>
@@ -128,6 +140,14 @@ const Layout = ({ children }: LayoutProps) => {
                 );
               })}
               <Link
+                to="/signup"
+                className="flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <UserPlus className="h-5 w-5" />
+                <span>Sign Up</span>
+              </Link>
+              <Link
                 to="/login"
                 className="flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
                 onClick={() => setMobileMenuOpen(false)}
@@ -144,6 +164,9 @@ const Layout = ({ children }: LayoutProps) => {
       <main className="flex-1">
         {children}
       </main>
+
+      {/* ChatBot */}
+      <ChatBot />
 
       {/* Footer */}
       <footer className="bg-card border-t border-border mt-auto">

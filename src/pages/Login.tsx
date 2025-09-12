@@ -24,14 +24,21 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
-  const [selectedRole, setSelectedRole] = useState<'alumni' | 'staff' | 'admin' | null>(null);
+  const [selectedRole, setSelectedRole] = useState<'student' | 'alumni' | 'staff' | 'admin' | null>(null);
 
   const roles = [
+    {
+      id: 'student' as const,
+      title: 'Student',
+      description: 'Access mentorships, internships, webinars, and training',
+      icon: GraduationCap,
+      color: 'bg-success'
+    },
     {
       id: 'alumni' as const,
       title: 'Alumni',
       description: 'Access alumni network, job portal, and mentorship',
-      icon: GraduationCap,
+      icon: User,
       color: 'bg-primary'
     },
     {
@@ -189,7 +196,7 @@ const Login = () => {
                   <p className="text-sm text-muted-foreground">
                     Don't have an account?
                   </p>
-                  <Link to="/register">
+                  <Link to="/signup">
                     <Button variant="link" className="p-0">
                       Register as {roles.find(r => r.id === selectedRole)?.title}
                     </Button>
@@ -219,7 +226,7 @@ const Login = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {roles.map((role) => {
             const Icon = role.icon;
             return (

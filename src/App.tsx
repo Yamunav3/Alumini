@@ -6,6 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import StudentPortal from "./pages/StudentPortal";
+import Gamification from "./pages/Gamification";
 import AlumniNetwork from "./pages/AlumniNetwork";
 import CareerPortal from "./pages/CareerPortal";
 import AdminPanel from "./pages/AdminPanel";  
@@ -27,9 +30,12 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Layout><Home /></Layout>} />
           <Route path="/alumni" element={<Layout><AlumniNetwork /></Layout>} />
           <Route path="/careers" element={<Layout><CareerPortal /></Layout>} />
+          <Route path="/student-portal" element={<Layout><StudentPortal /></Layout>} />
+          <Route path="/gamification" element={<Layout><Gamification /></Layout>} />
           <Route path="/admin" element={<Layout><AdminPanel /></Layout>} />
           <Route path="/staff" element={<Layout><StaffPortal /></Layout>} />
           <Route path="/donations" element={<Layout><DonationPortal /></Layout>} />

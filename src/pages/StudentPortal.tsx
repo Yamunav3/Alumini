@@ -1,0 +1,479 @@
+import { useState } from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { 
+  Users, 
+  Briefcase, 
+  Video, 
+  BookOpen, 
+  Star, 
+  Award, 
+  MessageCircle,
+  Calendar,
+  Search,
+  Filter,
+  Heart,
+  MapPin,
+  Clock,
+  DollarSign,
+  Trophy,
+  Target,
+  Zap
+} from "lucide-react";
+
+const StudentPortal = () => {
+  const [activeTab, setActiveTab] = useState("mentorship");
+
+  const mentors = [
+    {
+      id: 1,
+      name: "Sarah Johnson",
+      title: "Senior Software Engineer",
+      company: "Google",
+      expertise: ["Web Development", "React", "Node.js"],
+      rating: 4.9,
+      sessions: 150,
+      image: "/placeholder.svg",
+      price: "Free",
+      availability: "Available"
+    },
+    {
+      id: 2,
+      name: "Michael Chen",
+      title: "Product Manager",
+      company: "Microsoft",
+      expertise: ["Product Strategy", "UI/UX", "Analytics"],
+      rating: 4.8,
+      sessions: 89,
+      image: "/placeholder.svg",
+      price: "$50/hour",
+      availability: "Busy"
+    },
+    {
+      id: 3,
+      name: "Emily Davis",
+      title: "Data Scientist",
+      company: "Netflix",
+      expertise: ["Machine Learning", "Python", "Statistics"],
+      rating: 4.9,
+      sessions: 112,
+      image: "/placeholder.svg",
+      price: "Free",
+      availability: "Available"
+    }
+  ];
+
+  const internships = [
+    {
+      id: 1,
+      title: "Software Engineering Intern",
+      company: "Tesla",
+      location: "Palo Alto, CA",
+      duration: "3 months",
+      stipend: "$3,000/month",
+      skills: ["React", "Python", "Git"],
+      deadline: "2024-02-15",
+      applicants: 245
+    },
+    {
+      id: 2,
+      title: "Marketing Intern",
+      company: "Spotify",
+      location: "New York, NY",
+      duration: "4 months",
+      stipend: "$2,500/month",
+      skills: ["Digital Marketing", "Analytics", "Content"],
+      deadline: "2024-02-20",
+      applicants: 189
+    },
+    {
+      id: 3,
+      title: "Design Intern",
+      company: "Airbnb",
+      location: "San Francisco, CA",
+      duration: "6 months",
+      stipend: "$4,000/month",
+      skills: ["Figma", "UI/UX", "Prototyping"],
+      deadline: "2024-03-01",
+      applicants: 312
+    }
+  ];
+
+  const webinars = [
+    {
+      id: 1,
+      title: "Building Your Tech Career",
+      speaker: "John Smith",
+      company: "Amazon",
+      date: "2024-01-25",
+      time: "2:00 PM EST",
+      attendees: 1250,
+      price: "Free",
+      duration: "1 hour"
+    },
+    {
+      id: 2,
+      title: "Advanced React Patterns",
+      speaker: "Lisa Wong",
+      company: "Facebook",
+      date: "2024-01-30",
+      time: "3:00 PM EST",
+      attendees: 890,
+      price: "$29",
+      duration: "2 hours"
+    },
+    {
+      id: 3,
+      title: "Data Science Fundamentals",
+      speaker: "David Miller",
+      company: "Tesla",
+      date: "2024-02-05",
+      time: "1:00 PM EST",
+      attendees: 567,
+      price: "$49",
+      duration: "3 hours"
+    }
+  ];
+
+  const trainings = [
+    {
+      id: 1,
+      title: "Full Stack Web Development",
+      provider: "Tech Academy",
+      duration: "12 weeks",
+      level: "Beginner",
+      price: "$599",
+      rating: 4.8,
+      students: 2340,
+      skills: ["HTML", "CSS", "JavaScript", "React", "Node.js"]
+    },
+    {
+      id: 2,
+      title: "Machine Learning Bootcamp",
+      provider: "AI Institute",
+      duration: "8 weeks",
+      level: "Intermediate",
+      price: "$799",
+      rating: 4.9,
+      students: 1567,
+      skills: ["Python", "TensorFlow", "Statistics", "Deep Learning"]
+    },
+    {
+      id: 3,
+      title: "Digital Marketing Mastery",
+      provider: "Marketing Pro",
+      duration: "6 weeks",
+      level: "Beginner",
+      price: "$399",
+      rating: 4.7,
+      students: 3421,
+      skills: ["SEO", "Social Media", "Analytics", "Content Strategy"]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5 p-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
+            Student Portal
+          </h1>
+          <p className="text-muted-foreground">
+            Connect with mentors, find internships, join webinars, and enhance your skills
+          </p>
+        </div>
+
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+          <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
+            <CardContent className="p-4 text-center">
+              <Users className="h-8 w-8 text-primary mx-auto mb-2" />
+              <p className="text-2xl font-bold text-primary">250+</p>
+              <p className="text-sm text-muted-foreground">Available Mentors</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-gradient-to-br from-secondary/10 to-secondary/5 border-secondary/20">
+            <CardContent className="p-4 text-center">
+              <Briefcase className="h-8 w-8 text-secondary mx-auto mb-2" />
+              <p className="text-2xl font-bold text-secondary">89</p>
+              <p className="text-sm text-muted-foreground">Open Internships</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-gradient-to-br from-success/10 to-success/5 border-success/20">
+            <CardContent className="p-4 text-center">
+              <Video className="h-8 w-8 text-success mx-auto mb-2" />
+              <p className="text-2xl font-bold text-success">45</p>
+              <p className="text-sm text-muted-foreground">Upcoming Webinars</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-gradient-to-br from-warning/10 to-warning/5 border-warning/20">
+            <CardContent className="p-4 text-center">
+              <BookOpen className="h-8 w-8 text-warning mx-auto mb-2" />
+              <p className="text-2xl font-bold text-warning">120+</p>
+              <p className="text-sm text-muted-foreground">Training Courses</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Main Content */}
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+          <TabsList className="grid w-full grid-cols-4 bg-card/50 backdrop-blur-sm">
+            <TabsTrigger value="mentorship" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <Users className="h-4 w-4 mr-2" />
+              Mentorship
+            </TabsTrigger>
+            <TabsTrigger value="internships" className="data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground">
+              <Briefcase className="h-4 w-4 mr-2" />
+              Internships
+            </TabsTrigger>
+            <TabsTrigger value="webinars" className="data-[state=active]:bg-success data-[state=active]:text-success-foreground">
+              <Video className="h-4 w-4 mr-2" />
+              Webinars
+            </TabsTrigger>
+            <TabsTrigger value="training" className="data-[state=active]:bg-warning data-[state=active]:text-warning-foreground">
+              <BookOpen className="h-4 w-4 mr-2" />
+              Training
+            </TabsTrigger>
+          </TabsList>
+
+          {/* Mentorship Tab */}
+          <TabsContent value="mentorship" className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Input placeholder="Search mentors by expertise..." className="pl-10" />
+              </div>
+              <Button variant="outline" className="flex items-center gap-2">
+                <Filter className="h-4 w-4" />
+                Filter
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {mentors.map((mentor) => (
+                <Card key={mentor.id} className="hover:shadow-lg transition-shadow bg-card/50 backdrop-blur-sm">
+                  <CardHeader className="pb-4">
+                    <div className="flex items-center space-x-4">
+                      <Avatar className="h-16 w-16">
+                        <AvatarImage src={mentor.image} />
+                        <AvatarFallback>{mentor.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-lg">{mentor.name}</h3>
+                        <p className="text-sm text-muted-foreground">{mentor.title}</p>
+                        <p className="text-sm font-medium text-primary">{mentor.company}</p>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex items-center justify-between text-sm">
+                      <div className="flex items-center space-x-1">
+                        <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                        <span>{mentor.rating}</span>
+                      </div>
+                      <span className="text-muted-foreground">{mentor.sessions} sessions</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {mentor.expertise.slice(0, 3).map((skill) => (
+                        <Badge key={skill} variant="secondary" className="text-xs">
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <Badge variant={mentor.availability === "Available" ? "default" : "destructive"}>
+                          {mentor.availability}
+                        </Badge>
+                        <span className="text-sm font-medium">{mentor.price}</span>
+                      </div>
+                    </div>
+                    <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
+                      <MessageCircle className="h-4 w-4 mr-2" />
+                      Connect
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Internships Tab */}
+          <TabsContent value="internships" className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Input placeholder="Search internships..." className="pl-10" />
+              </div>
+              <Button variant="outline" className="flex items-center gap-2">
+                <Filter className="h-4 w-4" />
+                Filter
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {internships.map((internship) => (
+                <Card key={internship.id} className="hover:shadow-lg transition-shadow bg-card/50 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="text-xl">{internship.title}</CardTitle>
+                    <CardDescription className="text-lg font-medium text-primary">
+                      {internship.company}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div className="flex items-center space-x-2">
+                        <MapPin className="h-4 w-4 text-muted-foreground" />
+                        <span>{internship.location}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Clock className="h-4 w-4 text-muted-foreground" />
+                        <span>{internship.duration}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <DollarSign className="h-4 w-4 text-muted-foreground" />
+                        <span>{internship.stipend}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Calendar className="h-4 w-4 text-muted-foreground" />
+                        <span>Due: {internship.deadline}</span>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {internship.skills.map((skill) => (
+                        <Badge key={skill} variant="outline" className="text-xs">
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-muted-foreground">
+                        {internship.applicants} applicants
+                      </span>
+                      <Button className="bg-gradient-to-r from-secondary to-primary hover:from-secondary/90 hover:to-primary/90">
+                        Apply Now
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Webinars Tab */}
+          <TabsContent value="webinars" className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Input placeholder="Search webinars..." className="pl-10" />
+              </div>
+              <Button variant="outline" className="flex items-center gap-2">
+                <Filter className="h-4 w-4" />
+                Filter
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {webinars.map((webinar) => (
+                <Card key={webinar.id} className="hover:shadow-lg transition-shadow bg-card/50 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="text-xl">{webinar.title}</CardTitle>
+                    <CardDescription>
+                      by {webinar.speaker} from {webinar.company}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div className="flex items-center space-x-2">
+                        <Calendar className="h-4 w-4 text-muted-foreground" />
+                        <span>{webinar.date}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Clock className="h-4 w-4 text-muted-foreground" />
+                        <span>{webinar.time}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Users className="h-4 w-4 text-muted-foreground" />
+                        <span>{webinar.attendees} registered</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <DollarSign className="h-4 w-4 text-muted-foreground" />
+                        <span className="font-medium">{webinar.price}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <Badge variant="outline">{webinar.duration}</Badge>
+                      <Button className="bg-gradient-to-r from-success to-secondary hover:from-success/90 hover:to-secondary/90">
+                        {webinar.price === "Free" ? "Register Free" : "Purchase"}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Training Tab */}
+          <TabsContent value="training" className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Input placeholder="Search training courses..." className="pl-10" />
+              </div>
+              <Button variant="outline" className="flex items-center gap-2">
+                <Filter className="h-4 w-4" />
+                Filter
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+              {trainings.map((training) => (
+                <Card key={training.id} className="hover:shadow-lg transition-shadow bg-card/50 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="text-lg">{training.title}</CardTitle>
+                    <CardDescription>{training.provider}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex items-center justify-between text-sm">
+                      <Badge variant="outline">{training.level}</Badge>
+                      <span className="text-muted-foreground">{training.duration}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-1">
+                        <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                        <span>{training.rating}</span>
+                      </div>
+                      <span className="text-sm text-muted-foreground">{training.students} students</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {training.skills.slice(0, 3).map((skill) => (
+                        <Badge key={skill} variant="secondary" className="text-xs">
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-lg font-bold text-primary">{training.price}</span>
+                      <Button className="bg-gradient-to-r from-warning to-primary hover:from-warning/90 hover:to-primary/90">
+                        Enroll Now
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
+  );
+};
+
+export default StudentPortal;
