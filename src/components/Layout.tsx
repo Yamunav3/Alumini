@@ -35,7 +35,6 @@ const Layout = ({ children }: LayoutProps) => {
     { name: "Career Portal", href: "/careers", icon: Briefcase },
     { name: "Student Portal", href: "/student-portal", icon: GraduationCap },
     { name: "Events", href: "/events", icon: Calendar },
-    { name: "Employers", href: "/employers", icon: Building },
     { name: "Gamification", href: "/gamification", icon: Trophy },
     { name: "Profile", href: "/profile", icon: User },
     { name: "Staff Portal", href: "/staff", icon: UserCheck },

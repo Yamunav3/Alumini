@@ -224,7 +224,7 @@ const StudentPortal = () => {
 
         {/* Main Content */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 bg-card/50 backdrop-blur-sm">
+          <TabsList className="grid w-full grid-cols-5 bg-card/50 backdrop-blur-sm">
             <TabsTrigger value="mentorship" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Users className="h-4 w-4 mr-2" />
               Mentorship
@@ -240,6 +240,10 @@ const StudentPortal = () => {
             <TabsTrigger value="training" className="data-[state=active]:bg-warning data-[state=active]:text-warning-foreground">
               <BookOpen className="h-4 w-4 mr-2" />
               Training
+            </TabsTrigger>
+            <TabsTrigger value="feedback" className="data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground">
+              <MessageCircle className="h-4 w-4 mr-2" />
+              Feedback
             </TabsTrigger>
           </TabsList>
 
@@ -468,6 +472,100 @@ const StudentPortal = () => {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          </TabsContent>
+
+          {/* Feedback Tab */}
+          <TabsContent value="feedback" className="space-y-6">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold mb-4">Student Feedback</h2>
+              <p className="text-muted-foreground">
+                Share your experience and help us improve our services
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Card className="bg-card/50 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle>Submit Feedback</CardTitle>
+                  <CardDescription>
+                    Tell us about your experience with our platform
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="feedback-type">Feedback Type</Label>
+                    <select id="feedback-type" className="w-full p-3 border rounded-lg">
+                      <option>General Feedback</option>
+                      <option>Mentorship Program</option>
+                      <option>Internship Portal</option>
+                      <option>Webinar Experience</option>
+                      <option>Training Courses</option>
+                      <option>Technical Issues</option>
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="rating">Overall Rating</Label>
+                    <div className="flex space-x-1">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="h-6 w-6 text-yellow-500 fill-current cursor-pointer hover:scale-110 transition-transform" />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="feedback-message">Your Feedback</Label>
+                    <textarea 
+                      id="feedback-message"
+                      className="w-full p-3 border rounded-lg" 
+                      rows={4}
+                      placeholder="Share your thoughts, suggestions, or concerns..."
+                    />
+                  </div>
+                  <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
+                    <MessageCircle className="h-4 w-4 mr-2" />
+                    Submit Feedback
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card/50 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle>Recent Student Feedback</CardTitle>
+                  <CardDescription>See what other students are saying</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="border-l-4 border-primary pl-4 py-2">
+                      <div className="flex items-center space-x-1 mb-1">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star key={star} className="h-3 w-3 text-yellow-500 fill-current" />
+                        ))}
+                      </div>
+                      <p className="text-sm">"The mentorship program exceeded my expectations. My mentor helped me land my dream internship!"</p>
+                      <p className="text-xs text-muted-foreground mt-1">- Sarah K., Computer Science</p>
+                    </div>
+                    <div className="border-l-4 border-secondary pl-4 py-2">
+                      <div className="flex items-center space-x-1 mb-1">
+                        {[1, 2, 3, 4].map((star) => (
+                          <Star key={star} className="h-3 w-3 text-yellow-500 fill-current" />
+                        ))}
+                        <Star className="h-3 w-3 text-gray-300" />
+                      </div>
+                      <p className="text-sm">"Great webinar content, but would love more interactive sessions."</p>
+                      <p className="text-xs text-muted-foreground mt-1">- Alex M., Business Administration</p>
+                    </div>
+                    <div className="border-l-4 border-success pl-4 py-2">
+                      <div className="flex items-center space-x-1 mb-1">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star key={star} className="h-3 w-3 text-yellow-500 fill-current" />
+                        ))}
+                      </div>
+                      <p className="text-sm">"The training courses are comprehensive and well-structured. Highly recommend!"</p>
+                      <p className="text-xs text-muted-foreground mt-1">- Emily R., Engineering</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </TabsContent>
         </Tabs>

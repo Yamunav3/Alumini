@@ -16,7 +16,7 @@ import StaffPortal from "./pages/StaffPortal";
 import DonationPortal from "./pages/DonationPortal";
 import Analytics from "./pages/Analytics";
 import EventManagement from "./pages/EventManagement";
-import EmployerPortal from "./pages/EmployerPortal";
+
 import AlumniProfiles from "./pages/AlumniProfiles";
 import NotFound from "./pages/NotFound";
 
@@ -41,7 +41,6 @@ const App = () => (
           <Route path="/donations" element={<Layout><DonationPortal /></Layout>} />
           <Route path="/analytics" element={<Layout><Analytics /></Layout>} />
           <Route path="/events" element={<Layout><EventManagement /></Layout>} />
-          <Route path="/employers" element={<Layout><EmployerPortal /></Layout>} />
           <Route path="/profile" element={<Layout><AlumniProfiles /></Layout>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

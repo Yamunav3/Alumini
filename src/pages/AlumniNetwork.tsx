@@ -191,11 +191,12 @@ const AlumniNetwork = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Tabs defaultValue="celebrations" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="celebrations">Celebrations</TabsTrigger>
             <TabsTrigger value="mentorship">Mentorship</TabsTrigger>
-            <TabsTrigger value="forum">Forum</TabsTrigger>
+            <TabsTrigger value="forums">Forums</TabsTrigger>
             <TabsTrigger value="directory">Directory</TabsTrigger>
+            <TabsTrigger value="feedback">Feedback</TabsTrigger>
           </TabsList>
 
           {/* Congratulatory Board */}
@@ -315,8 +316,8 @@ const AlumniNetwork = () => {
             </div>
           </TabsContent>
 
-          {/* Forum */}
-          <TabsContent value="forum" className="space-y-6">
+          {/* Forums */}
+          <TabsContent value="forums" className="space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-semibold">Discussion Forum</h2>
               <Button>
@@ -433,6 +434,76 @@ const AlumniNetwork = () => {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          </TabsContent>
+
+          {/* Feedback */}
+          <TabsContent value="feedback" className="space-y-6">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-semibold">Alumni Feedback</h2>
+              <Button>
+                <MessageSquare className="h-4 w-4 mr-2" />
+                Submit Feedback
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Share Your Experience</CardTitle>
+                  <CardDescription>
+                    Help us improve by sharing your feedback about our alumni services
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Subject</label>
+                    <Input placeholder="What would you like to share?" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Category</label>
+                    <select className="w-full p-2 border rounded-md">
+                      <option>General Feedback</option>
+                      <option>Website Improvement</option>
+                      <option>Event Suggestion</option>
+                      <option>Networking Issues</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Message</label>
+                    <textarea 
+                      className="w-full p-2 border rounded-md" 
+                      rows={4}
+                      placeholder="Please share your detailed feedback..."
+                    />
+                  </div>
+                  <Button className="w-full">Submit Feedback</Button>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Recent Feedback</CardTitle>
+                  <CardDescription>See what other alumni are saying</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="border-l-4 border-primary pl-4">
+                      <p className="text-sm">"Great networking opportunities! The mentorship program has been invaluable."</p>
+                      <p className="text-xs text-muted-foreground mt-1">- Alex R., Class of 2018</p>
+                    </div>
+                    <div className="border-l-4 border-secondary pl-4">
+                      <p className="text-sm">"Love the new alumni directory feature. Makes it easy to connect with peers."</p>
+                      <p className="text-xs text-muted-foreground mt-1">- Sarah M., Class of 2015</p>
+                    </div>
+                    <div className="border-l-4 border-accent pl-4">
+                      <p className="text-sm">"The career portal helped me find amazing job opportunities. Thank you!"</p>
+                      <p className="text-xs text-muted-foreground mt-1">- David K., Class of 2020</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </TabsContent>
         </Tabs>
