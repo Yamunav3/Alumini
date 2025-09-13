@@ -34,10 +34,9 @@ const Layout = ({ children }: LayoutProps) => {
     { name: "Alumni Network", href: "/alumni", icon: Users },
     { name: "Career Portal", href: "/careers", icon: Briefcase },
     { name: "Student Portal", href: "/student-portal", icon: GraduationCap },
+    { name: "Staff Portal", href: "/staff", icon: UserCheck },
     { name: "Events", href: "/events", icon: Calendar },
     { name: "Gamification", href: "/gamification", icon: Trophy },
-    { name: "Profile", href: "/profile", icon: User },
-    { name: "Staff Portal", href: "/staff", icon: UserCheck },
     { name: "Donations", href: "/donations", icon: Heart },
     { name: "Analytics", href: "/analytics", icon: BarChart3 },
     { name: "Admin", href: "/admin", icon: Settings },
@@ -57,9 +56,9 @@ const Layout = ({ children }: LayoutProps) => {
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">A</span>
               </div>
-              <span className="text-xl font-bold text-foreground hidden sm:block">
-                Astra
-              </span>
+               <span className="text-xl font-bold text-foreground hidden sm:block">
+                 Asthra
+               </span>
               </Link>
             </div>
 
@@ -172,7 +171,7 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">Astra</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">Asthra</h3>
               <p className="text-muted-foreground text-sm">
                 Connecting alumni, empowering futures, and building lasting relationships.
               </p>
@@ -203,7 +202,7 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-            © 2024 Astra. All rights reserved.
+            © 2024 Asthra. All rights reserved.
           </div>
         </div>
       </footer>
