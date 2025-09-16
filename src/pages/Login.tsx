@@ -218,7 +218,7 @@ const Login = () => {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-sm">A</span>
             </div>
-            <span className="text-xl font-bold">Astra</span>
+            <span className="text-xl font-bold">Asthra</span>
           </Link>
           <h1 className="text-3xl font-bold text-foreground">Choose Your Role</h1>
           <p className="text-muted-foreground mt-2">
