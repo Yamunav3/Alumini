@@ -28,7 +28,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hi! I'm Asthra Assistant. I can help you with information about mentorships, internships, events, and more. How can I assist you today?",
+      text: "Hi! I'm Astra Assistant. I can help you with information about mentorships, internships, events, and more. How can I assist you today?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -79,7 +79,7 @@ const ChatBot = () => {
     } else if (lowercaseMessage.includes('donation') || lowercaseMessage.includes('donate')) {
       return "Thank you for your interest in supporting students! Donations help fund scholarships, events, and mentorship programs. You can donate any amount starting from $10. Would you like to learn about our current fundraising campaigns?";
     } else if (lowercaseMessage.includes('hello') || lowercaseMessage.includes('hi')) {
-      return "Hello! Welcome to Asthra. I'm here to help you navigate our alumni network and find the resources you need. What would you like to explore today?";
+      return "Hello! Welcome to Astra. I'm here to help you navigate our alumni network and find the resources you need. What would you like to explore today?";
     } else {
       return "I understand you're looking for information. I can help you with mentorships, internships, webinars, donations, and general navigation. Could you please be more specific about what you're looking for?";
     }
@@ -118,7 +118,7 @@ const ChatBot = () => {
               </AvatarFallback>
             </Avatar>
             <div>
-              <CardTitle className="text-sm">Asthra Assistant</CardTitle>
+              <CardTitle className="text-sm">Astra Assistant</CardTitle>
               <CardDescription className="text-xs">Always here to help</CardDescription>
             </div>
           </div>
