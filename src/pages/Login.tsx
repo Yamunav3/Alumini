@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -25,6 +26,15 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
   const [selectedRole, setSelectedRole] = useState<'student' | 'alumni' | 'staff' | 'admin' | null>(null);
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const roleParam = searchParams.get('role');
+    if (roleParam && ['student', 'alumni', 'staff', 'admin'].includes(roleParam)) {
+      setSelectedRole(roleParam as 'student' | 'alumni' | 'staff' | 'admin');
+    }
+  }, [searchParams]);
 
   const roles = [
     {
@@ -133,7 +143,30 @@ const Login = () => {
                         </Button>
                       </div>
                     </div>
-                    <Button className="w-full">Sign In</Button>
+                    <Button 
+                      className="w-full"
+                      onClick={() => {
+                        // Handle login logic here
+                        switch(selectedRole) {
+                          case 'student':
+                            navigate('/student-dashboard');
+                            break;
+                          case 'alumni':
+                            navigate('/alumni-dashboard');
+                            break;
+                          case 'staff':
+                            navigate('/staff-dashboard');
+                            break;
+                          case 'admin':
+                            navigate('/admin-dashboard');
+                            break;
+                          default:
+                            navigate('/');
+                        }
+                      }}
+                    >
+                      Sign In
+                    </Button>
                   </div>
                 </TabsContent>
 
@@ -177,7 +210,30 @@ const Login = () => {
                           className="text-center text-lg"
                         />
                       </div>
-                      <Button className="w-full">Verify OTP</Button>
+                      <Button 
+                        className="w-full"
+                        onClick={() => {
+                          // Handle OTP verification logic here
+                          switch(selectedRole) {
+                            case 'student':
+                              navigate('/student-dashboard');
+                              break;
+                            case 'alumni':
+                              navigate('/alumni-dashboard');
+                              break;
+                            case 'staff':
+                              navigate('/staff-dashboard');
+                              break;
+                            case 'admin':
+                              navigate('/admin-dashboard');
+                              break;
+                            default:
+                              navigate('/');
+                          }
+                        }}
+                      >
+                        Verify OTP
+                      </Button>
                       <Button 
                         variant="ghost" 
                         className="w-full"
@@ -214,7 +270,7 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center bg-muted/50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-2xl">
         <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center space-x-2 mb-6">
+          <Link to="/welcome" className="inline-flex items-center space-x-2 mb-6">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-sm">A</span>
             </div>
@@ -259,7 +315,7 @@ const Login = () => {
         <div className="text-center mt-8">
           <p className="text-sm text-muted-foreground">
             Need help choosing? 
-            <Link to="/" className="text-primary hover:underline ml-1">
+            <Link to="/welcome" className="text-primary hover:underline ml-1">
               Contact support
             </Link>
           </p>
