@@ -311,7 +311,7 @@ const Signup = () => {
             <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-lg">A</span>
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Astra</span>
+            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Asthra</span>
           </Link>
           <h1 className="text-4xl font-bold text-foreground mb-4">Join Our Community</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
