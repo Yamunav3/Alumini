@@ -406,7 +406,7 @@ const EmployerPortal = () => {
               <CardHeader>
                 <CardTitle>Partnership Opportunities</CardTitle>
                 <CardDescription>
-                  Explore partnership programs with Asthra to enhance recruitment and collaboration
+                  Explore partnership programs with Astra to enhance recruitment and collaboration
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
